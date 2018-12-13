@@ -1,6 +1,10 @@
 package com.example.mayohn.openglesdemo.fieldhockey;
 
+import android.content.Context;
 import android.opengl.GLSurfaceView;
+
+import com.example.mayohn.openglesdemo.R;
+import com.example.mayohn.openglesdemo.utils.TextResourceReader;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -18,8 +22,10 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int BYTES_PER_FLOAT = 4;
     private FloatBuffer vertexData;
+    private Context context;
 
-    public AirHockeyRender() {
+    public AirHockeyRender(Context context) {
+        this.context = context;
         float[] tableVertices = {
                 0f, 0f,
                 0f, 14f,
@@ -43,6 +49,8 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
                 4.5f, 12f
         };
         vertexData = ByteBuffer.allocateDirect(tableVerticesWithTriangles.length * BYTES_PER_FLOAT).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        String vertexShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_vertex_shader);
+        String fragmentShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_fragment_shader);
     }
 
     @Override
