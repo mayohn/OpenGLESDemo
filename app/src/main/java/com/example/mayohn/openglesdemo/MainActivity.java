@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mayohn.openglesdemo.fieldhockey.AirHockeyActivity;
+import com.example.mayohn.openglesdemo.point.PointActivity;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         intent.setClass(MainActivity.this, PointActivity.class);
                         break;
+                    case 1:
+                        intent.setClass(MainActivity.this, AirHockeyActivity.class);
+                        break;
                 }
                 startActivity(intent);
             }
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initSource() {
         strList.add("四个点");
+        strList.add("曲棍球");
     }
 
     /**
@@ -57,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
         boolean isSupport = configurationInfo.reqGlEsVersion >= 0x20000;
-        if (isSupport){
-            Toast.makeText(MainActivity.this,"检测您的手机支持GL2.0",Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(MainActivity.this,"对不起！手机不支持GL2.0",Toast.LENGTH_SHORT).show();
+        if (isSupport) {
+            Toast.makeText(MainActivity.this, "检测您的手机支持GL2.0", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "对不起！手机不支持GL2.0", Toast.LENGTH_SHORT).show();
         }
     }
 

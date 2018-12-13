@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PointActivity"></activity>
+        <activity android:name=".point.PointActivity"></activity>
+        <activity android:name=".fieldhockey.AirHockeyActivity" />
     </application>
 
 </manifest>

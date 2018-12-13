@@ -1,7 +1,9 @@
-package com.example.mayohn.openglesdemo;
+package com.example.mayohn.openglesdemo.point;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+
+import com.example.mayohn.openglesdemo.BaseActivity;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -11,13 +13,14 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class PointActivity extends BaseActivity {
-        private float vertices[] = {
+    private float vertices[] = {
             -0.5f, 0.5f, 0.0f,//左上角
             -0.5f, -0.5f, 0.0f,//左下角
-                0.5f, -0.5f, 0.0f,//右下角
-                0.5f, 0.5f, 0.0f//右上角
+            0.5f, -0.5f, 0.0f,//右下角
+            0.5f, 0.5f, 0.0f//右上角
     };
-//顶点数组
+    private GLSurfaceView surfaceView;
+    //顶点数组
 //    private float[] mArrayVertex = {0f, 0f, 0f};
     private FloatBuffer vertexBuffer;
 
@@ -25,7 +28,7 @@ public class PointActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //浮点数是4个字节，因此我们将,如果顶点数为4。
-        GLSurfaceView surfaceView = new GLSurfaceView(this);
+        surfaceView = new GLSurfaceView(this);
         surfaceView.setRenderer(new GLSurfaceView.Renderer() {
             @Override
             public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
@@ -39,7 +42,7 @@ public class PointActivity extends BaseActivity {
 
             @Override
             public void onSurfaceChanged(GL10 gl10, int width, int height) {
-                gl10.glViewport(0, 0, width/2 , height);//将当前视图端口设置为新大小。
+                gl10.glViewport(0, 0, width / 2, height);//将当前视图端口设置为新大小。
 //                gl10.glMatrixMode(GL10.GL_PROJECTION);//选择投影矩阵
 //                gl10.glLoadIdentity();//重置投影矩阵
 //                GLU.gluPerspective(gl10, 45.0f, (float) width / (float) height, 0.1f, 100.0f);//计算窗口的高宽比
@@ -79,4 +82,20 @@ public class PointActivity extends BaseActivity {
         return buffer;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (surfaceView != null) {
+            surfaceView.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (surfaceView != null) {
+            surfaceView.onPause();
+
+        }
+    }
 }
