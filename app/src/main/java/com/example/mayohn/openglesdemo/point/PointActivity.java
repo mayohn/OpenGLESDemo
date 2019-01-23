@@ -32,7 +32,7 @@ public class PointActivity extends BaseActivity {
         surfaceView.setRenderer(new GLSurfaceView.Renderer() {
             @Override
             public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-                gl10.glClearColor(0.0f, 0, 0.0f, 0.5f);
+                gl10.glClearColor(1.0f, 1f, 1.0f, 1f);
 //                gl10.glShadeModel(GL10.GL_SMOOTH);//两点之间颜色过度效果
 //                gl10.glClearDepthf(1.0f);//深度缓冲设置
 //                gl10.glEnable(GL10.GL_DEPTH_TEST);// Enables depth testing.
