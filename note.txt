@@ -1,0 +1,5 @@
+问题1：could not create new shader
+解决： glSurfaceView.setEGLContextClientVersion(2);
+
+问题2：compile of shader failed.
+解决：glCompileShader(shaderObjectId);
